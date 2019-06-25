@@ -26,6 +26,6 @@
     </select>
   </div>
 
-  <button type="submit" class="btn btn-primary">Edit</button>
+  <button type="submit" class="btn btn-primary" [disabled]="this.editBookForm.invalid">Edit</button>
   <button type="button" class="btn btn-primary" (click)="goToBookList()">Back</button>
 </form>

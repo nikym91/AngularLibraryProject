@@ -50,7 +50,7 @@ export class BookService {
   updateBook(book: Book) {
     console.log("edit: ", book);
     /*
-    P.S : deve ritornare un ": Observable<Book>"    
+    P.S : deve ritornare un ": Observable<Book>"   
     const url = `${this.urlBook}/${book.id}`;
     return this.http.put<Book>(url, book, this.httpOptions)
       .pipe(
@@ -59,6 +59,12 @@ export class BookService {
         map(() => book),
         catchError(this.handleError)
       );*/
+  }
+
+  addBook(book: Book) {
+    console.log("add book: ", JSON.stringify(book));
+    //P.S : deve ritornare un ": Observable<Book>"   
+    //return this.http.post<Book>(this.urlBook, book, this.httpOptions);
   }
 
   getAuthorByBookAuthorId(id: number): Observable<Author> {
@@ -91,6 +97,10 @@ export class BookService {
 
   goToBooksList(router: Router) {
     router.navigate(['/books-list']);
+  }
+
+  goToAuthorAdd(router: Router) {
+    router.navigate(['/book-add']);
   }
 
   goToBookEdit(router: Router, id: number) {

@@ -21,4 +21,8 @@ export class BookHomeComponent implements OnInit {
     this.bookService.goToBooksList(this.router);
   }
 
+  goToBookAdd(){
+    this.bookService.goToAuthorAdd(this.router);
+  }
+
 }

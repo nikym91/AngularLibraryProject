@@ -8,11 +8,13 @@ import { AuthorHomeComponent } from './author/author-home/author-home.component'
 import { AuthorsListComponent } from './author/authors-list/authors-list.component';
 import { AuthorDetailComponent } from './author/author-detail/author-detail.component';
 import { BookEditComponent } from './book/book-edit/book-edit.component';
+import { BookAddComponent } from './book/book-add/book-add.component';
 
 const routes: Routes = [
   { path: 'home', component: MasterPageComponent },
   { path: 'books-home', component: BookHomeComponent },
   { path: 'books-list', component: BooksListComponent },
+  { path: 'book-add', component: BookAddComponent },
   { path: 'book-detail/:id', component: BookDetailComponent},
   { path: 'book/:id/edit', component:BookEditComponent },
   { path: 'authors-home', component: AuthorHomeComponent},

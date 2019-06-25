@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BookDetailComponent } from './book-detail/book-detail.component';
 import { BookEditComponent } from './book-edit/book-edit.component';
 import { ReactiveFormsModule } from "@angular/forms";
+import { BookAddComponent } from './book-add/book-add.component';
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import { ReactiveFormsModule } from "@angular/forms";
     BookHomeComponent,
     BooksListComponent,
     BookDetailComponent,
-    BookEditComponent
+    BookEditComponent,
+    BookAddComponent
   ]
 })
 export class BookModule { }
