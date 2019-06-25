@@ -1,25 +1,31 @@
-<div class="col button">
-  <button type="button" class="btn btn-primary" (click)="goToBookList()">Back</button>
-</div>
-<form novalidate [formGroup]="editBookForm">
+<h3>Edit: {{book.title}}</h3>
+<form novalidate [formGroup]="editBookForm" (ngSubmit)="submitEditBook()">
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputTitle">Titolo</label>
-      <input type="text" formControlName="title" class="form-control" id="inputTitle" placeholder="Titolo">
+      <input type="text" formControlName="title" [ngClass]="{'is-invalid': this.editBookForm.get('title').errors?.required && this.editBookForm.get('title').touched }" class="form-control" id="inputTitle" placeholder="Titolo">
     </div>
     <div class="form-group col-md-6">
       <label for="inputSubtitle">Sottotitolo</label>
-      <input type="text" formControlName="subtitle" class="form-control" id="inputSubtitle" placeholder="Sottotitolo">
+      <input type="text" formControlName="subtitle" [ngClass]="{'is-invalid': this.editBookForm.get('subtitle').errors?.required && this.editBookForm.get('subtitle').touched }" class="form-control" id="inputSubtitle" placeholder="Sottotitolo">
     </div>
   </div>
   <div class="form-group">
     <label for="inputPublisher">Editore</label>
-    <input type="text" formControlName="publisher" class="form-control" id="inputPublisher" placeholder="Editore">
+    <input type="text" formControlName="publisher" [ngClass]="{'is-invalid': this.editBookForm.get('publisher').errors?.required && this.editBookForm.get('publisher').touched }" class="form-control" id="inputPublisher" placeholder="Editore">
   </div>
   <div class="form-group">
     <label for="inputDescription">Descrizione</label>
-    <textarea type="text" formControlName="description" class="form-control" id="inputDescription" placeholder="Descrizione"></textarea>
+    <textarea type="text" formControlName="description" [ngClass]="{'is-invalid': this.editBookForm.get('description').errors?.required && this.editBookForm.get('description').touched }" class="form-control" id="inputDescription"
+      placeholder="Descrizione"></textarea>
+  </div>
+  <div class="form-group">
+    <label for="selectAuthor">Seleziona Autore</label>
+    <select formControlName="author" [ngClass]="{'is-invalid': this.editBookForm.get('author').errors?.required && this.editBookForm.get('author').touched }" class="form-control" id="selectAuthor">
+      <option *ngFor="let author of authors" value={{author.id}}>{{author.name}}</option>
+    </select>
   </div>
 
-  <button type="submit" class="btn btn-primary">Sign in</button>
+  <button type="submit" class="btn btn-primary">Edit</button>
+  <button type="button" class="btn btn-primary" (click)="goToBookList()">Back</button>
 </form>

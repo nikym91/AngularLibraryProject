@@ -29,6 +29,12 @@ export class AuthorService {
     )
   }
 
+  getAuthorByName(text: string): Observable<Author> {
+    return this.getAllAuthors().pipe(
+      map((authors: Author[]) => authors.find(a => a.name == text))
+    )
+  }
+
   private handleError(err: HttpErrorResponse) {
     let errorMessage = '';
     if (err.error instanceof ErrorEvent) {

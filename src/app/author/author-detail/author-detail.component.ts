@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AuthorService } from '../author.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Author } from '../author';
+import { Book } from 'src/app/book/Book';
+import { BookService } from 'src/app/book/book.service';
 
 @Component({
   selector: 'app-author-detail',
@@ -10,11 +12,13 @@ import { Author } from '../author';
 })
 export class AuthorDetailComponent implements OnInit {
   author: Author;
+  books: Book[];
 
   constructor(
     private authorService: AuthorService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private bookService: BookService
   ) { }
 
   ngOnInit() {
@@ -30,12 +34,25 @@ export class AuthorDetailComponent implements OnInit {
     this.authorService.getAuthorById(id).subscribe(
       a => {
         this.author = a;
+        this.getBooksOfAuthor(this.author.id);
+      }
+    )
+  }
+
+  getBooksOfAuthor(id: number) {
+     this.authorService.getBookByAuthorId(id).subscribe(
+      b => {
+        this.books = b;
       }
     )
   }
 
   goBack() {
     this.authorService.goToAuthorList(this.router);
+  }
+
+  goToBookDetail(id: number){
+    this.bookService.goToBookDetail(this.router, id);
   }
 
 }
