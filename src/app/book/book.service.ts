@@ -67,6 +67,18 @@ export class BookService {
     //return this.http.post<Book>(this.urlBook, book, this.httpOptions);
   }
 
+  deleteBook(id: number) {
+    console.log("delete: ", id);
+    /*
+    P.S : deve ritornare un ": Observable<{}>"  
+    const url = `${this.urlBook}/${id}`; 
+    return this.http.delete<Book>(url, this.httpOptions)
+      .pipe(
+        tap(data => console.log('deleteBook: ' + id)),
+        catchError(this.handleError)
+      );*/
+  }
+
   getAuthorByBookAuthorId(id: number): Observable<Author> {
     return this.http.get<Author[]>(this.urlAuthor).pipe(
       map((author: Author[]) => author.find(a => a.id == id)),

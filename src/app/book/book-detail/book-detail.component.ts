@@ -46,6 +46,18 @@ export class BookDetailComponent implements OnInit {
     )
   }
 
+  deleteBook(id: number){
+    console.log("delete")
+    if(confirm(`sei sicuro di voler eliminare definitivamente: ${this.book.title}?`)){
+      this.bookService.deleteBook(id);
+      this.goToBooksList();
+    }
+  }
+
+  goToBooksList() {
+    this.bookService.goToBooksList(this.router);
+  }
+
   goBack() {
     this.bookService.goToBooksList(this.router);
   }

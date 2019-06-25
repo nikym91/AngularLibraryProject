@@ -7,6 +7,7 @@ import { BookDetailComponent } from './book-detail/book-detail.component';
 import { BookEditComponent } from './book-edit/book-edit.component';
 import { ReactiveFormsModule } from "@angular/forms";
 import { BookAddComponent } from './book-add/book-add.component';
+import { BookDeleteComponent } from './book-delete/book-delete.component';
 
 @NgModule({
   imports: [
@@ -19,7 +20,8 @@ import { BookAddComponent } from './book-add/book-add.component';
     BooksListComponent,
     BookDetailComponent,
     BookEditComponent,
-    BookAddComponent
+    BookAddComponent,
+    BookDeleteComponent
   ]
 })
 export class BookModule { }
