@@ -1,0 +1,13 @@
+<div class="container-fluid">
+  <div class="card col" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">Titolo: {{book.title}}</h5>
+      <h6 class="card-title">SottoTitolo: {{book.subtitle}}</h6>
+      <app-book-author [authorId]="book.authorId"></app-book-author>
+      <p class="card-text">Descrizione: {{book.description}}</p>
+      <p class="card-text">Pagine: {{book.pages}}</p>
+      <p class="card-text">Editore: {{book.publisher}}</p>
+      <button type="button" class="btn btn-primary" (click)="goBack()">Back</button>
+    </div>
+  </div>
+</div>

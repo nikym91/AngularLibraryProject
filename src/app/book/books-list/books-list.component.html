@@ -1,0 +1,14 @@
+<div class="container-fluid">
+  <div class="col button">
+    <button type="button" class="btn btn-primary" (click)="goBack()">Back</button>
+  </div>
+  <div *ngFor="let book of books" class="card col" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">Titolo: {{book.title}}</h5>
+      <h6 class="card-title">SottoTitolo: {{book.subtitle}}</h6>
+      <p class="card-text">Descrizione: {{book.description}}</p>
+      <a (click)="goToDetails(book.id)" class="btn btn-primary">Dettagli</a>
+      <a (click)="goToEdit(book.id)" class="btn btn-primary">Edit</a>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+<div class="col button">
+  <button type="button" class="btn btn-primary" (click)="goBack()">Back</button>
+</div>
+<div class="d-flex row justify-content-center">
+  <div *ngFor="let author of authors" class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">{{author.id}}: {{author.name}}</h5>
+      <h6 class="card-subtitle mb-2 text-muted">Username: {{author.username}}</h6>
+      <h6 class="card-subtitle mb-2 text-muted">Address: </h6>
+      <ul>
+        <li>Street: {{author.address.street}}</li>
+        <li>Suite: {{author.address.suite}}</li>
+        <li>City: {{author.address.city}}</li>
+        <li>Zipcode: {{author.address.zipcode}}</li>
+      </ul>
+    </div>
+    <a (click)="goToDetails(author.id)" class="btn btn-primary">Dettagli</a>
+  </div>
+</div>
