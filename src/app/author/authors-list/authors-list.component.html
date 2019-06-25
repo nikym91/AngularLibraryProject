@@ -13,7 +13,8 @@
         <li>City: {{author.address.city}}</li>
         <li>Zipcode: {{author.address.zipcode}}</li>
       </ul>
+      <a (click)="goToDetails(author.id)" class="btn btn-primary">Dettagli</a>
+      <a (click)="goToEditAuthor(author.id)" class="btn btn-primary">Edit</a>
     </div>
-    <a (click)="goToDetails(author.id)" class="btn btn-primary">Dettagli</a>
   </div>
 </div>

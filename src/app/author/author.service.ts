@@ -5,6 +5,7 @@ import { catchError, map } from 'rxjs/operators';
 import { throwError, Observable } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Book } from '../book/Book';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,8 @@ export class AuthorService {
   private urlBook: string = '../assets/data/books.json';
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private fb: FormBuilder
   ) { }
 
   getAllAuthors(): Observable<Author[]> {
@@ -53,6 +55,12 @@ export class AuthorService {
     }
   }
 
+  authorForm(): FormGroup {
+    return this.fb.group({
+      
+    })
+  }
+
   getBookByAuthorId(id: number): Observable<Book[]> {
     return this.http.get<Book[]>(this.urlBook).pipe(
       map((books: Book[]) => books.filter(b => b.authorId == id))
@@ -65,6 +73,10 @@ export class AuthorService {
 
   goToAuthorList(router: Router) {
     router.navigate(['/authors-list']);
+  }  
+
+  goToAuthorEdit(router: Router, id: number) {
+    router.navigate(['/author', id, 'edit']);
   }
 
   goToAuthorDetail(router: Router, id: number) {

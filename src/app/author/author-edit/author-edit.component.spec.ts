@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { BookDeleteComponent } from './book-delete.component';
+import { AuthorEditComponent } from './author-edit.component';
 
-describe('BookDeleteComponent', () => {
-  let component: BookDeleteComponent;
-  let fixture: ComponentFixture<BookDeleteComponent>;
+describe('AuthorEditComponent', () => {
+  let component: AuthorEditComponent;
+  let fixture: ComponentFixture<AuthorEditComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BookDeleteComponent ]
+      declarations: [ AuthorEditComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(BookDeleteComponent);
+    fixture = TestBed.createComponent(AuthorEditComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

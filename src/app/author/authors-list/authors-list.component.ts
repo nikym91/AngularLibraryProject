@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Author } from '../author';
 import { AuthorService } from '../author.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-authors-list',
@@ -13,7 +13,8 @@ export class AuthorsListComponent implements OnInit {
 
   constructor(
     private authorService: AuthorService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
@@ -26,6 +27,10 @@ export class AuthorsListComponent implements OnInit {
 
   goToDetails(id: number){
     this.authorService.goToAuthorDetail(this.router, id);
+  }
+
+  goToEditAuthor(id: number){
+    this.authorService.goToAuthorEdit(this.router, id);
   }
 
   goBack(){
