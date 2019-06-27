@@ -17,6 +17,10 @@ export class AuthorHomeComponent implements OnInit {
   ngOnInit() {
   }
 
+  goToAuthorAdd(){
+    this.authorService.goToAuthorAdd(this.router);
+  }
+
   goToAuthorList(){
     this.authorService.goToAuthorList(this.router);
   }

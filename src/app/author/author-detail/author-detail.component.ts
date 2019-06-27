@@ -55,4 +55,11 @@ export class AuthorDetailComponent implements OnInit {
     this.bookService.goToBookDetail(this.router, id);
   }
 
+  deleteAuthor(id: number){
+    console.log("delete")
+    if(confirm(`sei sicuro di voler eliminare definitivamente: ${this.author.name}?`)){
+      this.authorService.deleteAuthor(id);
+      this.authorService.goToAuthorList(this.router);
+    }
+  }
 }

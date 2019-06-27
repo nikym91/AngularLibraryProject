@@ -10,6 +10,7 @@ import { AuthorDetailComponent } from './author/author-detail/author-detail.comp
 import { BookEditComponent } from './book/book-edit/book-edit.component';
 import { BookAddComponent } from './book/book-add/book-add.component';
 import { AuthorEditComponent } from './author/author-edit/author-edit.component';
+import { AuthorAddComponent } from './author/author-add/author-add.component';
 
 const routes: Routes = [
   { path: 'home', component: MasterPageComponent },
@@ -22,6 +23,7 @@ const routes: Routes = [
 
   { path: 'authors-home', component: AuthorHomeComponent},
   { path: 'authors-list', component: AuthorsListComponent},
+  { path: 'author-add', component: AuthorAddComponent},
   { path: 'author-detail/:id', component: AuthorDetailComponent},
   { path: 'author/:id/edit', component: AuthorEditComponent },
 

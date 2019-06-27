@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, RootRenderer } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Author } from './author';
 import { catchError, map } from 'rxjs/operators';
@@ -11,6 +11,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   providedIn: 'root'
 })
 export class AuthorService {
+  
   private urlAuthor: string = '../assets/data/authors.json';
   private urlBook: string = '../assets/data/books.json';
 
@@ -124,6 +125,10 @@ export class AuthorService {
 
   goToBookDetail(router: Router, id: number) {
     router.navigate(['/book-detail', id]);
+  }
+
+  goToAuthorAdd(router: Router) {
+    router.navigate(['/author-add']);
   }
 
 }

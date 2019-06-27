@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Author } from '../author';
 import { AuthorService } from '../author.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-author-edit',
@@ -17,6 +17,7 @@ export class AuthorEditComponent implements OnInit {
   constructor(
     private authorService: AuthorService,
     private route: ActivatedRoute,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -48,7 +49,9 @@ export class AuthorEditComponent implements OnInit {
   }
 
   submitEditAuthor(){
+    console.log("form value: ", this.editAuthorForm.value);
     this.checkValidity();
+    console.log("form value: ", this.editAuthorForm.valid);
   }
 
   checkValidity() {
@@ -59,6 +62,6 @@ export class AuthorEditComponent implements OnInit {
 
   editAuthor(author: Author) {
     this.authorService.updateAuthor(author);
+    this.authorService.goToAuthorList(this.router);
   }
-
 }

@@ -53,7 +53,7 @@ export class BookAddComponent implements OnInit {
 
   AddBook(book: Book) {
     this.bookService.addBook(book);
-    this.bookService.goToBooksHome(this.router);
+    this.bookService.goToBooksList(this.router);
   }
 
 }

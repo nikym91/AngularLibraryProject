@@ -1,0 +1,75 @@
+<h3>{{title}}</h3>
+<form novalidate [formGroup]="addAuthorForm" (ngSubmit)="submitaddAuthor()">
+  <div class="form-row">
+
+    <div class="form-group col-md-6">
+      <label for="inputName">Name</label>
+      <input formControlName="name"
+        [ngClass]="{'is-invalid': addAuthorForm.get('name').invalid && addAuthorForm.get('name').touched}" type="text"
+        class="form-control" id="inputName" placeholder="Name">
+      <div class="invalid-feedback">
+        <small *ngIf="addAuthorForm.get('name').errors?.required" class="text-danger"> Name is required </small>
+      </div>
+    </div>
+
+    <div class="form-group col-md-6">
+      <label for="inputUsername">Username</label>
+      <input formControlName="username"
+        [ngClass]="{'is-invalid': addAuthorForm.get('username').invalid && addAuthorForm.get('username').touched}"
+        type="text" class="form-control" id="inputUsername" placeholder="Username">
+      <div class="invalid-feedback">
+        <small *ngIf="addAuthorForm.get('username').errors?.required" class="text-danger">Authorname is required </small>
+      </div>
+    </div>
+
+  </div>
+  <div formGroupName="address">
+    <div class="form-row">
+
+      <div class="form-group col-md-6">
+        <label for="inputStreet">Street</label>
+        <input formControlName="street"
+          [ngClass]="{'is-invalid': addAuthorForm.get('address').get('street').invalid && addAuthorForm.get('address').get('street').touched}"
+          type="text" class="form-control" id="inputStreet" placeholder="Street">
+        <div class="invalid-feedback">
+          <small *ngIf="addAuthorForm.get('address').get('street').errors?.required" class="text-danger"> Street is required </small>
+        </div>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label for="inputSuite">Suite</label>
+        <input formControlName="suite"
+          [ngClass]="{'is-invalid': addAuthorForm.get('address').get('suite').invalid && addAuthorForm.get('address').get('suite').touched}"
+          type="text" class="form-control" id="inputSuite" placeholder="Suite">
+        <div class="invalid-feedback">
+          <small *ngIf="addAuthorForm.get('address').get('suite').errors?.required" class="text-danger"> Suite is required </small>
+        </div>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label for="inputCity">City</label>
+        <input formControlName="city"
+          [ngClass]="{'is-invalid': addAuthorForm.get('address').get('city').invalid && addAuthorForm.get('address').get('city').touched}"
+          type="text" class="form-control" id="inputCity" placeholder="City">
+        <div class="invalid-feedback">
+          <small *ngIf="addAuthorForm.get('address').get('city').errors?.required" class="text-danger"> City is required </small>
+        </div>
+      </div>
+
+      <div class="form-group col-md-2">
+        <label for="inputZip">Zip</label>
+        <input formControlName="zip"
+          [ngClass]="{'is-invalid': addAuthorForm.get('address').get('zip').invalid && addAuthorForm.get('address').get('zip').touched}"
+          type="text" class="form-control" id="inputZip" placeholder="Zip">
+        <div class="invalid-feedback">
+          <small *ngIf="addAuthorForm.get('address').get('zip').errors?.required" class="text-danger"> Zip is required </small>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-primary" [disabled]="addAuthorForm.invalid">Add Author</button>
+  <button (click)="onClickBack()" type="button" class="btn btn-primary">Back</button>
+
+</form>

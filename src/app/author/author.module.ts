@@ -6,6 +6,7 @@ import { AuthorHomeComponent } from './author-home/author-home.component';
 import { AuthorDetailComponent } from './author-detail/author-detail.component';
 import { AuthorEditComponent } from './author-edit/author-edit.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AuthorAddComponent } from './author-add/author-add.component';
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import { ReactiveFormsModule } from '@angular/forms';
    AuthorsListComponent,
    AuthorHomeComponent,
    AuthorDetailComponent,
-   AuthorEditComponent
+   AuthorEditComponent,
+   AuthorAddComponent
   ]
 })
 export class AuthorModule { }

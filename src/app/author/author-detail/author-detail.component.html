@@ -12,8 +12,11 @@
       </ul>
       <div class="row">
         <h6 class="card-subtitle mb-2 text-muted">Lista Libri: </h6>
-        <a *ngFor="let book of books" (click)="goToBookDetail(book.id)" class="badge badge-info">Titolo: {{book.title}}</a>      </div>
+        <a *ngFor="let book of books" (click)="goToBookDetail(book.id)" class="badge badge-info">Titolo:
+          {{book.title}}</a>
+      </div>
+      <button type="button" class="btn btn-primary" (click)="deleteAuthor(author.id)">Elimina</button>
+      <button type="button" class="btn btn-primary" (click)="goBack()">Back</button>
     </div>
-    <button type="button" class="btn btn-primary" (click)="goBack()">Back</button>
   </div>
 </div>
