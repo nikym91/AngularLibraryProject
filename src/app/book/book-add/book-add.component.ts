@@ -33,7 +33,7 @@ export class BookAddComponent implements OnInit {
       }
     )
   }
-
+  
   goToBookHome(){
     this.bookService.goToBooksHome(this.router)
   }

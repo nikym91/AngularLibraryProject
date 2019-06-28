@@ -2,25 +2,40 @@
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputTitle">Titolo</label>
-      <input type="text" formControlName="title" [ngClass]="{'is-invalid': this.addBookForm.get('title').errors?.required && this.addBookForm.get('title').touched }" class="form-control" id="inputTitle" placeholder="Titolo">
+      <input type="text" formControlName="title"
+        [ngClass]="{'is-invalid': this.addBookForm.get('title').errors?.required && this.addBookForm.get('title').touched }"
+        class="form-control" id="inputTitle" placeholder="Titolo">
     </div>
     <div class="form-group col-md-6">
       <label for="inputSubtitle">Sottotitolo</label>
-      <input type="text" formControlName="subtitle" [ngClass]="{'is-invalid': this.addBookForm.get('subtitle').errors?.required && this.addBookForm.get('subtitle').touched }" class="form-control" id="inputSubtitle" placeholder="Sottotitolo">
+      <input type="text" formControlName="subtitle"
+        [ngClass]="{'is-invalid': this.addBookForm.get('subtitle').errors?.required && this.addBookForm.get('subtitle').touched }"
+        class="form-control" id="inputSubtitle" placeholder="Sottotitolo">
     </div>
   </div>
   <div class="form-group">
     <label for="inputPublisher">Editore</label>
-    <input type="text" formControlName="publisher" [ngClass]="{'is-invalid': this.addBookForm.get('publisher').errors?.required && this.addBookForm.get('publisher').touched }" class="form-control" id="inputPublisher" placeholder="Editore">
+    <input type="text" formControlName="publisher"
+      [ngClass]="{'is-invalid': this.addBookForm.get('publisher').errors?.required && this.addBookForm.get('publisher').touched }"
+      class="form-control" id="inputPublisher" placeholder="Editore">
+  </div>
+  <div class="form-group">
+    <label for="inputPages">Pages</label>
+    <input type="text" formControlName="pages"
+      [ngClass]="{'is-invalid': this.addBookForm.get('pages').errors?.required && this.addBookForm.get('pages').touched }"
+      class="form-control" id="inputPages" placeholder="Pages">
   </div>
   <div class="form-group">
     <label for="inputDescription">Descrizione</label>
-    <textarea type="text" formControlName="description" [ngClass]="{'is-invalid': this.addBookForm.get('description').errors?.required && this.addBookForm.get('description').touched }" class="form-control" id="inputDescription"
-      placeholder="Descrizione"></textarea>
+    <textarea type="text" formControlName="description"
+      [ngClass]="{'is-invalid': this.addBookForm.get('description').errors?.required && this.addBookForm.get('description').touched }"
+      class="form-control" id="inputDescription" placeholder="Descrizione"></textarea>
   </div>
   <div class="form-group">
     <label for="selectAuthor">Seleziona Autore</label>
-    <select formControlName="authorId" [ngClass]="{'is-invalid': this.addBookForm.get('authorId').errors?.required && this.addBookForm.get('authorId').touched }" class="form-control" id="selectAuthor">
+    <select formControlName="authorId"
+      [ngClass]="{'is-invalid': this.addBookForm.get('authorId').errors?.required && this.addBookForm.get('authorId').touched }"
+      class="form-control" id="selectAuthor">
       <option *ngFor="let author of authors" value={{author.authorId}}>{{author.name}}</option>
     </select>
   </div>

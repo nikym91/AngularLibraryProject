@@ -100,6 +100,7 @@ export class BookService {
       title: ['', Validators.required],
       subtitle: ['', Validators.required],
       publisher: ['', Validators.required],
+      pages: ['', Validators.required],
       description: ['', Validators.required],
       authorId: ['', Validators.required],
     })

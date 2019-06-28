@@ -55,7 +55,7 @@ export class BookEditComponent implements OnInit {
   }
 
   getAuthorByBookAuthorId(book: Book) {
-    this.bookService.getAuthorByBookAuthorId(book.bookId).subscribe(
+    this.bookService.getAuthorByBookAuthorId(book.authorId).subscribe(
       a => {
         this.author = a;
         this.patchValueForm(book, this.author);
@@ -68,6 +68,7 @@ export class BookEditComponent implements OnInit {
       title: book.title,
       subtitle: book.subtitle,
       publisher: book.publisher,
+      pages: book.pages,
       description: book.description,
       authorId: author.authorId
     })
