@@ -11,8 +11,9 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   providedIn: 'root'
 })
 export class BookService {
-  private urlBook: string = '../assets/data/books.json';
-  private urlAuthor: string = '../assets/data/authors.json';
+  //private urlBook: string = '../assets/data/books.json';
+  private urlBook: string = 'https://localhost:44319/api/Books';
+  private urlAuthor: string = 'https://localhost:44319/api/Authors';//'../assets/data/authors.json';
   httpOptions = {
     headers: new HttpHeaders({
       "Content-Type": "application/json"
@@ -32,7 +33,7 @@ export class BookService {
 
   getBookById(id: number): Observable<Book> {
     return this.getAllBooks().pipe(
-      map((book: Book[]) => book.find(b => b.id == id))
+      map((book: Book[]) => book.find(b => b.bookId == id))
     )
   }
 
@@ -47,41 +48,42 @@ export class BookService {
     return throwError(errorMessage);
   }
 
-  updateBook(book: Book) {
-    console.log("edit: ", book);
+  updateBook(book: Book): Observable<Book> {
+    console.log("edit Service: ", book);
     /*
-    P.S : deve ritornare un ": Observable<Book>"   
-    const url = `${this.urlBook}/${book.id}`;
+    P.S : deve ritornare un ": Observable<Book>" */  
+    const url = `${this.urlBook}/${book.bookId}`;
+    console.log("url Service: ", url);
     return this.http.put<Book>(url, book, this.httpOptions)
       .pipe(
-        tap(() => console.log('updateBook: ' + book.id)),
+        tap(() => console.log('updateBook: ' + book.bookId)),
         // Return the Book on an update
         map(() => book),
         catchError(this.handleError)
-      );*/
+      );
   }
 
-  addBook(book: Book) {
-    console.log("add book: ", JSON.stringify(book));
+  addBook(book: Book): Observable<Book> {
+    //console.log("add book: ", JSON.stringify(book));
     //P.S : deve ritornare un ": Observable<Book>"   
-    //return this.http.post<Book>(this.urlBook, book, this.httpOptions);
+    return this.http.post<Book>(this.urlBook, book, this.httpOptions);
   }
 
-  deleteBook(id: number) {
-    console.log("delete: ", id);
+  deleteBook(id: number): Observable<{}> {
+    //console.log("delete: ", id);
     /*
-    P.S : deve ritornare un ": Observable<{}>"  
+    P.S : deve ritornare un ": Observable<{}>" */
     const url = `${this.urlBook}/${id}`; 
     return this.http.delete<Book>(url, this.httpOptions)
       .pipe(
         tap(data => console.log('deleteBook: ' + id)),
         catchError(this.handleError)
-      );*/
+      );
   }
 
   getAuthorByBookAuthorId(id: number): Observable<Author> {
     return this.http.get<Author[]>(this.urlAuthor).pipe(
-      map((author: Author[]) => author.find(a => a.id == id)),
+      map((author: Author[]) => author.find(a => a.authorId == id)),
       catchError(this.handleError)
     )
   }
@@ -99,7 +101,7 @@ export class BookService {
       subtitle: ['', Validators.required],
       publisher: ['', Validators.required],
       description: ['', Validators.required],
-      author: ['', Validators.required],
+      authorId: ['', Validators.required],
     })
   }
 

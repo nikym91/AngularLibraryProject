@@ -22,7 +22,7 @@
   <div class="form-group">
     <label for="selectAuthor">Seleziona Autore</label>
     <select formControlName="author" [ngClass]="{'is-invalid': this.editBookForm.get('author').errors?.required && this.editBookForm.get('author').touched }" class="form-control" id="selectAuthor">
-      <option *ngFor="let author of authors" value={{author.id}}>{{author.name}}</option>
+      <option *ngFor="let author of authors" value={{author.authorId}}>{{author.name}}</option>
     </select>
   </div>
 

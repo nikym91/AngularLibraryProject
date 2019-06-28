@@ -1,7 +1,7 @@
 import { Injectable, RootRenderer } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Author } from './author';
-import { catchError, map } from 'rxjs/operators';
+import { catchError, map, tap } from 'rxjs/operators';
 import { throwError, Observable } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Book } from '../book/Book';
@@ -12,8 +12,13 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class AuthorService {
   
-  private urlAuthor: string = '../assets/data/authors.json';
-  private urlBook: string = '../assets/data/books.json';
+  private urlAuthor: string = 'https://localhost:44319/api/Authors';//'../assets/data/authors.json';
+  private urlBook: string = 'https://localhost:44319/api/Books';//'../assets/data/books.json';
+  httpOptions = {
+    headers: new HttpHeaders({
+      "Content-Type": "application/json"
+    })
+  }
 
   constructor(
     private http: HttpClient,
@@ -28,7 +33,7 @@ export class AuthorService {
 
   getAuthorById(id: number): Observable<Author> {
     return this.getAllAuthors().pipe(
-      map((authors: Author[]) => authors.find(a => a.id == id))
+      map((authors: Author[]) => authors.find(a => a.authorId == id))
     )
   }
 
@@ -64,41 +69,41 @@ export class AuthorService {
         street: ['', Validators.required],
         suite: ['', Validators.required],
         city: ['', Validators.required],
-        zip: ['', Validators.required]
+        zipcode: ['', Validators.required]
       })
     })
   }
   
-  updateAuthor(author: Author) {
+  updateAuthor(author: Author): Observable<Author> {
     console.log("edit: ", author);
     /*
-    P.S : deve ritornare un ": Observable<Author>"   
-    const url = `${this.urlAuthor}/${author.id}`;
+    P.S : deve ritornare un ": Observable<Author>" */ 
+    const url = `${this.urlAuthor}/${author.authorId}`;
     return this.http.put<Author>(url, author, this.httpOptions)
       .pipe(
-        tap(() => console.log('updateAuthor: ' + author.id)),
+        tap(() => console.log('updateAuthor: ' + author.authorId)),
         // Return the Author on an update
         map(() => author),
         catchError(this.handleError)
-      );*/
+      );
   }
 
-  addAuthor(author: Author) {
+  addAuthor(author: Author): Observable<Author> {
     console.log("add Author: ", JSON.stringify(author));
     //P.S : deve ritornare un ": Observable<Author>"   
-    //return this.http.post<Author>(this.urlAuthor, author, this.httpOptions);
+    return this.http.post<Author>(this.urlAuthor, author, this.httpOptions);
   }
 
-  deleteAuthor(id: number) {
+  deleteAuthor(id: number): Observable<{}> {
     console.log("delete: ", id);
     /*
-    P.S : deve ritornare un ": Observable<{}>"  
+    P.S : deve ritornare un ": Observable<{}>" */ 
     const url = `${this.urlAuthor}/${id}`; 
     return this.http.delete<Author>(url, this.httpOptions)
       .pipe(
         tap(data => console.log('deleteAuthor: ' + id)),
         catchError(this.handleError)
-      );*/
+      );
   }
 
   getBookByAuthorId(id: number): Observable<Book[]> {

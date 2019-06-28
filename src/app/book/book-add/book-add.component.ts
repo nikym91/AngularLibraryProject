@@ -47,13 +47,14 @@ export class BookAddComponent implements OnInit {
 
   checkValidityForm() {
     if(this.addBookForm.valid){
+      console.log("Book Add: ", this.addBookForm.value)
       this.AddBook(this.addBookForm.value);
     }
   }
 
   AddBook(book: Book) {
-    this.bookService.addBook(book);
-    this.bookService.goToBooksList(this.router);
+    this.bookService.addBook(book).subscribe(
+      () => this.bookService.goToBooksList(this.router)
+    );
   }
-
 }

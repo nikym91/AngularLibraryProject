@@ -55,7 +55,7 @@ export class BookEditComponent implements OnInit {
   }
 
   getAuthorByBookAuthorId(book: Book) {
-    this.bookService.getAuthorByBookAuthorId(book.id).subscribe(
+    this.bookService.getAuthorByBookAuthorId(book.bookId).subscribe(
       a => {
         this.author = a;
         this.patchValueForm(book, this.author);
@@ -69,7 +69,7 @@ export class BookEditComponent implements OnInit {
       subtitle: book.subtitle,
       publisher: book.publisher,
       description: book.description,
-      author: author.id
+      authorId: author.authorId
     })
   }
 
@@ -91,7 +91,11 @@ export class BookEditComponent implements OnInit {
   }
 
   editBook(book: Book) {
-    this.bookService.updateBook(book);
-    this.bookService.goToBooksList(this.router);
+    const b = { ...this.book, ...book };
+    this.bookService.updateBook(b)
+    .subscribe(
+      () => this.bookService.goToBooksList(this.router)
+    );
+    //
   }
 }

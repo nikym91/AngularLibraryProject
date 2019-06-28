@@ -57,12 +57,12 @@
       </div>
 
       <div class="form-group col-md-2">
-        <label for="inputZip">Zip</label>
-        <input formControlName="zip"
-          [ngClass]="{'is-invalid': editAuthorForm.get('address').get('zip').invalid && editAuthorForm.get('address').get('zip').touched}"
-          type="text" class="form-control" id="inputZip" placeholder="Zip">
+        <label for="inputZipcode">Zipcode</label>
+        <input formControlName="zipcode"
+          [ngClass]="{'is-invalid': editAuthorForm.get('address').get('zipcode').invalid && editAuthorForm.get('address').get('zipcode').touched}"
+          type="text" class="form-control" id="inputZipcode" placeholder="Zipcode">
         <div class="invalid-feedback">
-          <small *ngIf="editAuthorForm.get('address').get('zip').errors?.required" class="text-danger"> Zip is required </small>
+          <small *ngIf="editAuthorForm.get('address').get('zipcode').errors?.required" class="text-danger"> Zipcode is required </small>
         </div>
       </div>
 

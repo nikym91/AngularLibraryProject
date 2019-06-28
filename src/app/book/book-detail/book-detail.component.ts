@@ -49,8 +49,10 @@ export class BookDetailComponent implements OnInit {
   deleteBook(id: number){
     console.log("delete")
     if(confirm(`sei sicuro di voler eliminare definitivamente: ${this.book.title}?`)){
-      this.bookService.deleteBook(id);
-      this.goToBooksList();
+      this.bookService.deleteBook(id)
+      .subscribe(
+        () => this.goToBooksList()
+      );
     }
   }
 

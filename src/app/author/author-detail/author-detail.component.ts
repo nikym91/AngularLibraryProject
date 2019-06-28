@@ -34,7 +34,7 @@ export class AuthorDetailComponent implements OnInit {
     this.authorService.getAuthorById(id).subscribe(
       a => {
         this.author = a;
-        this.getBooksOfAuthor(this.author.id);
+        this.getBooksOfAuthor(this.author.authorId);
       }
     )
   }
@@ -58,8 +58,10 @@ export class AuthorDetailComponent implements OnInit {
   deleteAuthor(id: number){
     console.log("delete")
     if(confirm(`sei sicuro di voler eliminare definitivamente: ${this.author.name}?`)){
-      this.authorService.deleteAuthor(id);
-      this.authorService.goToAuthorList(this.router);
+      this.authorService.deleteAuthor(id)
+      .subscribe(
+        () => this.authorService.goToAuthorList(this.router)
+      );
     }
   }
 }

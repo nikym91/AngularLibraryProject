@@ -43,7 +43,7 @@ export class AuthorEditComponent implements OnInit {
         street: author.address.street,
         suite: author.address.suite,
         city: author.address.city,
-        zip: author.address.zipcode
+        zipcode: author.address.zipcode
       }
     })
   }
@@ -61,7 +61,10 @@ export class AuthorEditComponent implements OnInit {
   }
 
   editAuthor(author: Author) {
-    this.authorService.updateAuthor(author);
-    this.authorService.goToAuthorList(this.router);
+    const a = { ...this.author, ...author };
+    this.authorService.updateAuthor(a)
+    .subscribe(
+      () => this.authorService.goToAuthorList(this.router)
+    );
   }
 }

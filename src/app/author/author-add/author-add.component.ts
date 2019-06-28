@@ -35,8 +35,10 @@ export class AuthorAddComponent implements OnInit {
   }
 
   addAuthor() {
-    this.authorService.addAuthor(this.addAuthorForm.value);
-    this.goToAuthorsList();
+    this.authorService.addAuthor(this.addAuthorForm.value)
+    .subscribe(
+      () => this.goToAuthorsList()
+    );
   }
 
   goToAuthorsList() {
